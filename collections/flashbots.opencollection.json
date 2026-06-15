@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flashbots Auction & MEV-Share Relay (JSON-RPC)",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Flashbots-Signature",
+      "value": "{{X-Flashbots-Signature}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "JSON-RPC 2.0 endpoint",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://relay.flashbots.net/",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Single JSON-RPC entry point. The `method` field selects one of the Flashbots methods listed below. All methods return a JSON-RPC envelope with `jsonrpc`, `id`, and either `result` or `error`."
+    }
+  ],
+  "bundled": true
+}
