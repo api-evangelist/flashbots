@@ -10,7 +10,7 @@ description: >-
   validators, and SUAVE - an Ethereum-native, MEV-aware, privacy-first
   encrypted mempool.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: >-
   https://raw.githubusercontent.com/api-evangelist/flashbots/refs/heads/main/apis.yml
 created: '2026-05-23'
