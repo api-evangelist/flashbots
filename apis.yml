@@ -85,7 +85,7 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.flashbots.net/flashbots-protect/overview
-      - type: QuickStart
+      - type: GettingStarted
         url: https://docs.flashbots.net/flashbots-protect/quick-start
       - type: Repository
         url: https://github.com/flashbots/rpc-endpoint
@@ -166,7 +166,7 @@ common:
     url: https://writings.flashbots.net
   - type: GitHub
     url: https://github.com/flashbots
-  - type: Forum
+  - type: Forums
     url: https://collective.flashbots.net
   - type: Community
     url: https://discord.gg/flashbots
