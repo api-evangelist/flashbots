@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/flashbots-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: flashbotsSignature
+  type: apiKey
+  in: header
+  parameter: X-Flashbots-Signature
+  description: 'Format: <publicKeyAddress>:<EIP-191 signature of keccak256(body)>'
+  sources:
+  - openapi/flashbots-openapi.yml
