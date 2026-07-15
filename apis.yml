@@ -156,6 +156,8 @@ apis:
       - type: Repository
         url: https://github.com/flashbots/suave-geth
 common:
+  - type: AgenticAccess
+    url: agentic-access/flashbots-agentic-access.yml
   - type: DomainSecurity
     url: security/flashbots-domain-security.yml
   - type: Authentication
