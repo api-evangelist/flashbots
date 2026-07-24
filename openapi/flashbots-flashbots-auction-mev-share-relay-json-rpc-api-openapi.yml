@@ -1,0 +1,426 @@
+openapi: 3.1.0
+info:
+  title: Flashbots Auction & MEV-Share Relay (JSON-RPC) Flashbots Auction & MEV Share Relay (JSON RPC) Flashbots Auction & MEV Share Relay (JSON RPC) Flashbots Auction & MEV Share Relay (JSON RPC) API
+  description: 'Flashbots exposes a JSON-RPC endpoint for submitting and simulating MEV bundles, sending private transactions through Flashbots Protect, and managing fee refunds. All methods are sent as JSON-RPC 2.0 POST requests against the relay endpoint. Requests must include an `X-Flashbots-Signature` header of the form `<publicKeyAddress>:<signature>`, where `signature` is the EIP-191 personal_sign over the keccak256 hash of the JSON body. Constraints: max 10,000 requests/sec per IP, max 100 transactions and 300,000 bytes per bundle.'
+  version: '1.0'
+  contact:
+    name: Flashbots
+    url: https://docs.flashbots.net/flashbots-auction/advanced/rpc-endpoint
+servers:
+- url: https://relay.flashbots.net
+  description: Mainnet relay
+- url: https://relay-sepolia.flashbots.net
+  description: Sepolia testnet relay
+security:
+- flashbotsSignature: []
+tags:
+- name: Flashbots Auction & MEV Share Relay (JSON RPC)
+paths:
+  /:
+    post:
+      summary: JSON-RPC 2.0 endpoint
+      description: Single JSON-RPC entry point. The `method` field selects one of the Flashbots methods listed below. All methods return a JSON-RPC envelope with `jsonrpc`, `id`, and either `result` or `error`.
+      operationId: jsonRpc
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/EthSendBundle'
+              - $ref: '#/components/schemas/MevSendBundle'
+              - $ref: '#/components/schemas/EthCallBundle'
+              - $ref: '#/components/schemas/MevSimBundle'
+              - $ref: '#/components/schemas/EthCancelBundle'
+              - $ref: '#/components/schemas/EthSendPrivateTransaction'
+              - $ref: '#/components/schemas/EthSendPrivateRawTransaction'
+              - $ref: '#/components/schemas/EthCancelPrivateTransaction'
+              - $ref: '#/components/schemas/FlashbotsGetFeeRefundTotalsByRecipient'
+              - $ref: '#/components/schemas/FlashbotsGetFeeRefundsByRecipient'
+              - $ref: '#/components/schemas/FlashbotsGetFeeRefundsByBundle'
+              - $ref: '#/components/schemas/FlashbotsGetFeeRefundsByBlock'
+              - $ref: '#/components/schemas/FlashbotsSetFeeRefundRecipient'
+              - $ref: '#/components/schemas/BuilderNetGetDelayedRefunds'
+              - $ref: '#/components/schemas/BuilderNetGetDelayedRefundTotalsByRecipient'
+            examples:
+              eth_sendBundle:
+                value:
+                  jsonrpc: '2.0'
+                  id: 1
+                  method: eth_sendBundle
+                  params:
+                  - txs:
+                    - 0x...
+                    blockNumber: '0x1234'
+              eth_sendPrivateTransaction:
+                value:
+                  jsonrpc: '2.0'
+                  id: 1
+                  method: eth_sendPrivateTransaction
+                  params:
+                  - tx: 0x...
+                    maxBlockNumber: '0x1234'
+                    preferences:
+                      fast: true
+      responses:
+        '200':
+          description: JSON-RPC response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonRpcResponse'
+      tags:
+      - Flashbots Auction & MEV Share Relay (JSON RPC)
+components:
+  schemas:
+    JsonRpcResponse:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      properties:
+        jsonrpc:
+          type: string
+          enum:
+          - '2.0'
+        id:
+          oneOf:
+          - type: integer
+          - type: string
+        result:
+          type: object
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+    FlashbotsGetFeeRefundsByRecipient:
+      allOf:
+      - $ref: '#/components/schemas/JsonRpcBase'
+      - type: object
+        properties:
+          method:
+            const: flashbots_getFeeRefundsByRecipient
+          params:
+            type: array
+            items:
+              type: object
+              required:
+              - recipient
+              properties:
+                recipient:
+                  type: string
+                cursor:
+                  type: string
+    EthCancelPrivateTransaction:
+      allOf:
+      - $ref: '#/components/schemas/JsonRpcBase'
+      - type: object
+        properties:
+          method:
+            const: eth_cancelPrivateTransaction
+          params:
+            type: array
+            items:
+              type: object
+              required:
+              - txHash
+              properties:
+                txHash:
+                  type: string
+    EthSendPrivateTransaction:
+      allOf:
+      - $ref: '#/components/schemas/JsonRpcBase'
+      - type: object
+        properties:
+          method:
+            const: eth_sendPrivateTransaction
+          params:
+            type: array
+            items:
+              type: object
+              required:
+              - tx
+              properties:
+                tx:
+                  type: string
+                maxBlockNumber:
+                  type: string
+                preferences:
+                  type: object
+                  properties:
+                    fast:
+                      type: boolean
+                    privacy:
+                      type: object
+                    validity:
+                      type: object
+    JsonRpcBase:
+      type: object
+      required:
+      - jsonrpc
+      - method
+      - id
+      properties:
+        jsonrpc:
+          type: string
+          enum:
+          - '2.0'
+        id:
+          oneOf:
+          - type: integer
+          - type: string
+        method:
+          type: string
+        params:
+          type: array
+    EthCallBundle:
+      allOf:
+      - $ref: '#/components/schemas/JsonRpcBase'
+      - type: object
+        properties:
+          method:
+            const: eth_callBundle
+          params:
+            type: array
+            items:
+              type: object
+              required:
+              - txs
+              - blockNumber
+              properties:
+                txs:
+                  type: array
+                  items:
+                    type: string
+                blockNumber:
+                  type: string
+                stateBlockNumber:
+                  type: string
+                timestamp:
+                  type: integer
+    EthSendBundle:
+      allOf:
+      - $ref: '#/components/schemas/JsonRpcBase'
+      - type: object
+        properties:
+          method:
+            const: eth_sendBundle
+          params:
+            type: array
+            items:
+              type: object
+              required:
+              - txs
+              - blockNumber
+              properties:
+                txs:
+                  type: array
+                  items:
+                    type: string
+                blockNumber:
+                  type: string
+                minTimestamp:
+                  type: integer
+                maxTimestamp:
+                  type: integer
+                revertingTxHashes:
+                  type: array
+                  items:
+                    type: string
+                replacementUuid:
+                  type: string
+                builders:
+                  type: array
+                  items:
+                    type: string
+    FlashbotsGetFeeRefundTotalsByRecipient:
+      allOf:
+      - $ref: '#/components/schemas/JsonRpcBase'
+      - type: object
+        properties:
+          method:
+            const: flashbots_getFeeRefundTotalsByRecipient
+          params:
+            type: array
+            items:
+              type: object
+              required:
+              - recipient
+              properties:
+                recipient:
+                  type: string
+    FlashbotsGetFeeRefundsByBlock:
+      allOf:
+      - $ref: '#/components/schemas/JsonRpcBase'
+      - type: object
+        properties:
+          method:
+            const: flashbots_getFeeRefundsByBlock
+          params:
+            type: array
+            items:
+              type: object
+              required:
+              - block_number
+              properties:
+                block_number:
+                  type: string
+    FlashbotsGetFeeRefundsByBundle:
+      allOf:
+      - $ref: '#/components/schemas/JsonRpcBase'
+      - type: object
+        properties:
+          method:
+            const: flashbots_getFeeRefundsByBundle
+          params:
+            type: array
+            items:
+              type: object
+              required:
+              - bundle_hash
+              properties:
+                bundle_hash:
+                  type: string
+    BuilderNetGetDelayedRefunds:
+      allOf:
+      - $ref: '#/components/schemas/JsonRpcBase'
+      - type: object
+        properties:
+          method:
+            const: buildernet_getDelayedRefunds
+          params:
+            type: array
+            items:
+              type: object
+              required:
+              - recipient
+              properties:
+                recipient:
+                  type: string
+                blockRangeFrom:
+                  type: string
+                blockRangeTo:
+                  type: string
+                cursor:
+                  type: string
+                hash:
+                  type: string
+    EthSendPrivateRawTransaction:
+      allOf:
+      - $ref: '#/components/schemas/JsonRpcBase'
+      - type: object
+        properties:
+          method:
+            const: eth_sendPrivateRawTransaction
+          params:
+            type: array
+            items:
+              oneOf:
+              - type: string
+              - type: object
+    FlashbotsSetFeeRefundRecipient:
+      allOf:
+      - $ref: '#/components/schemas/JsonRpcBase'
+      - type: object
+        properties:
+          method:
+            const: flashbots_setFeeRefundRecipient
+          params:
+            type: array
+            items:
+              type: object
+              required:
+              - from
+              - to
+              properties:
+                from:
+                  type: string
+                to:
+                  type: string
+    MevSendBundle:
+      allOf:
+      - $ref: '#/components/schemas/JsonRpcBase'
+      - type: object
+        properties:
+          method:
+            const: mev_sendBundle
+          params:
+            type: array
+            items:
+              type: object
+              properties:
+                version:
+                  type: string
+                inclusion:
+                  type: object
+                  properties:
+                    block:
+                      type: string
+                    maxBlock:
+                      type: string
+                body:
+                  type: array
+                  items:
+                    type: object
+                validity:
+                  type: object
+                privacy:
+                  type: object
+                metadata:
+                  type: object
+    EthCancelBundle:
+      allOf:
+      - $ref: '#/components/schemas/JsonRpcBase'
+      - type: object
+        properties:
+          method:
+            const: eth_cancelBundle
+          params:
+            type: array
+            items:
+              type: object
+              required:
+              - replacementUuid
+              properties:
+                replacementUuid:
+                  type: string
+    BuilderNetGetDelayedRefundTotalsByRecipient:
+      allOf:
+      - $ref: '#/components/schemas/JsonRpcBase'
+      - type: object
+        properties:
+          method:
+            const: buildernet_getDelayedRefundTotalsByRecipient
+          params:
+            type: array
+            items:
+              type: object
+              required:
+              - recipient
+              properties:
+                recipient:
+                  type: string
+                blockRangeFrom:
+                  type: string
+                blockRangeTo:
+                  type: string
+    MevSimBundle:
+      allOf:
+      - $ref: '#/components/schemas/JsonRpcBase'
+      - type: object
+        properties:
+          method:
+            const: mev_simBundle
+          params:
+            type: array
+            items:
+              type: object
+  securitySchemes:
+    flashbotsSignature:
+      type: apiKey
+      in: header
+      name: X-Flashbots-Signature
+      description: 'Format: <publicKeyAddress>:<EIP-191 signature of keccak256(body)>'
