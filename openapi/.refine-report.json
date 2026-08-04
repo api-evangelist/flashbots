@@ -1,0 +1,14 @@
+{
+  "provider": "flashbots",
+  "sources": [
+    "flashbots-flashbots-auction-mev-share-relay-json-rpc-api-openapi.yml"
+  ],
+  "outputs": [
+    "flashbots-flashbots-auction-mev-share-relay-json-rpc-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
