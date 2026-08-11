@@ -176,6 +176,13 @@ apis:
   - type: OpenAPI
     url: openapi/flashbots-flashbots-auction-mev-share-relay-json-rpc-api-openapi.yml
 common:
+  - type: IssueTracker
+    url: https://github.com/flashbots/rpc-endpoint/issues
+  - type: CodeOfConduct
+    url: https://github.com/flashbots/rpc-endpoint/blob/main/CODE_OF_CONDUCT.md
+  - type: License
+    name: MIT
+    url: https://github.com/flashbots/rpc-endpoint/blob/main/LICENSE
   - type: AgenticAccess
     url: agentic-access/flashbots-agentic-access.yml
   - type: DomainSecurity
