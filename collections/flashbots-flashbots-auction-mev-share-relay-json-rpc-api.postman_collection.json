@@ -1,0 +1,148 @@
+{
+  "item": [
+    {
+      "id": "b2d2191a-b62d-4c62-a84d-3804d9f2eb81",
+      "name": "Flashbots Auction & MEV Share Relay (JSON RPC)",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "45bcd047-dcbd-4334-af66-e080aaeeaa1f",
+          "name": "JSON-RPC 2.0 endpoint",
+          "request": {
+            "name": "JSON-RPC 2.0 endpoint",
+            "description": {
+              "content": "Single JSON-RPC entry point. The `method` field selects one of the Flashbots methods listed below. All methods return a JSON-RPC envelope with `jsonrpc`, `id`, and either `result` or `error`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"value\": \"<Error: Could not resolve allOf schema\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b78657b4-96c0-46f0-bfb5-7039d21dbbab",
+              "name": "JSON-RPC response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Flashbots-Signature",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": 1,\n  \"method\": \"eth_sendBundle\",\n  \"params\": [\n    {\n      \"txs\": [\n        \"0x...\"\n      ],\n      \"blockNumber\": \"0x1234\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": 8285,\n  \"result\": {},\n  \"error\": {\n    \"code\": 6447,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://relay.flashbots.net",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Flashbots-Signature"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d7108389-a681-4d52-8cc7-6827a028bdc9",
+    "name": "Flashbots Auction & MEV-Share Relay (JSON-RPC) Flashbots Auction & MEV Share Relay (JSON RPC) Flashbots Auction & MEV Share Relay (JSON RPC) Flashbots Auction & MEV Share Relay (JSON RPC) API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Flashbots exposes a JSON-RPC endpoint for submitting and simulating MEV bundles, sending private transactions through Flashbots Protect, and managing fee refunds. All methods are sent as JSON-RPC 2.0 POST requests against the relay endpoint. Requests must include an `X-Flashbots-Signature` header of the form `<publicKeyAddress>:<signature>`, where `signature` is the EIP-191 personal_sign over the keccak256 hash of the JSON body. Constraints: max 10,000 requests/sec per IP, max 100 transactions and 300,000 bytes per bundle.\n\nContact Support:\n Name: Flashbots",
+      "type": "text/plain"
+    }
+  }
+}
