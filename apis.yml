@@ -92,6 +92,12 @@ apis:
   - Private Mempool
   - Frontrunning Protection
   - MEV Refunds
+  - Wallets
+  tags_raw:
+  - JSON-RPC
+  - Private Mempool
+  - Frontrunning Protection
+  - MEV Refunds
   - Wallet
   properties:
   - type: Documentation
@@ -170,7 +176,8 @@ apis:
     auction & mev share relay (json rpc).
   humanURL: https://docs.flashbots.net/flashbots-auction/advanced/rpc-endpoint
   baseURL: https://relay.flashbots.net
-  tags:
+  tags: []
+  tags_raw:
   - Flashbots Auction & MEV Share Relay (JSON RPC)
   properties:
   - type: OpenAPI
