@@ -51,6 +51,18 @@ tags:
 - Flashbots Protect
 - SUAVE
 - Block Builders
+- Validator
+tags_raw:
+- MEV
+- Ethereum
+- Blockchain
+- JSON-RPC
+- Relay
+- MEV-Boost
+- MEV-Share
+- Flashbots Protect
+- SUAVE
+- Block Builders
 - Validators
 apis:
 - aid: flashbots:auction-relay
@@ -62,6 +74,12 @@ apis:
   humanURL: https://docs.flashbots.net/flashbots-auction/advanced/rpc-endpoint
   baseURL: https://relay.flashbots.net
   tags:
+  - JSON-RPC
+  - Bundles
+  - Private Transactions
+  - Auctions
+  - Ethereum
+  tags_raw:
   - JSON-RPC
   - Bundles
   - Private Transactions
@@ -142,6 +160,12 @@ apis:
   humanURL: https://docs.flashbots.net/flashbots-mev-boost/introduction
   baseURL: https://boost-relay.flashbots.net
   tags:
+  - MEV-Boost
+  - Relay
+  - Block Building
+  - Validator
+  - Proposer-Builder Separation
+  tags_raw:
   - MEV-Boost
   - Relay
   - Block Building
