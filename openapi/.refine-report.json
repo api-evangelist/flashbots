@@ -1,7 +1,7 @@
 {
   "provider": "flashbots",
   "sources": [
-    "flashbots-flashbots-auction-mev-share-relay-json-rpc-api-openapi.yml"
+    "_original/flashbots-openapi.yml"
   ],
   "outputs": [
     "flashbots-flashbots-auction-mev-share-relay-json-rpc-api-openapi.yml"
@@ -9,6 +9,14 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "flashbots-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "flashbots-openapi.yml: tagged paths POST / -> Flashbots Auction & MEV Share Relay (JSON RPC)",
+    "flashbots-openapi.yml: declared missing tag: Flashbots Auction & MEV Share Relay (JSON RPC)",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "flashbots-flashbots-auction-mev-share-relay-json-rpc-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

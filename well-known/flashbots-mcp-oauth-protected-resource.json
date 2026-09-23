@@ -1,0 +1,1 @@
+{"resource":"https://mcp.flashbots.net/","authorization_servers":["https://mcp.flashbots.net"],"bearer_methods_supported":["header"],"scopes_supported":["openid","email","profile","offline_access"]}
