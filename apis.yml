@@ -254,6 +254,8 @@ common:
   url: https://www.flashbots.net/research
 - type: TermsOfService
   url: https://writings.flashbots.net/legal
+- type: SpectralRules
+  url: https://github.com/flashbots/relay-specs/blob/a4e0a50d9d46bfe881fd74cc7e0db366371f4eed/.spectral.yml
 maintainers:
 - FN: Kin Lane
   email: kinlane@gmail.com

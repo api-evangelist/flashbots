@@ -1,0 +1,33 @@
+# harvested from https://github.com/flashbots/relay-specs/blob/a4e0a50d9d46bfe881fd74cc7e0db366371f4eed/.spectral.yml on 2026-10-09 — a Spectral ruleset published in the provider's own GitHub repository (flashbots/relay-specs); found by GitHub code search, fetched verbatim
+x-method: harvested
+x-stamped: 2026-10-09
+x-source-url: https://github.com/flashbots/relay-specs/blob/a4e0a50d9d46bfe881fd74cc7e0db366371f4eed/.spectral.yml
+extends: [["spectral:oas", "all"]]
+formats: ["oas3"]
+rules:
+  operation-singular-tag: off
+  oas3-parameter-description: off
+  contact-properties: off
+  operation-tags: error
+  openapi-tags-alphabetical: error
+  operation-tag-defined: error
+  paths-snake-case:
+    description: All YAML paths MUST follow snake-case
+    severity: error
+    recommended: true
+    message: "path is not snake-case: {{error}}"
+    given: $.paths[*]~
+    then:
+      function: pattern
+      functionOptions:
+        match: "^\/([a-z0-9]+(_[a-z0-9]+)*)?(\/[a-z0-9]+(_[a-z0-9]+)*|\/{.+})*$"
+  parameters-snake-case-alphanumeric:
+    description: Path parameters MUST follow snake case
+    severity: error
+    recommended: true
+    message: "{{property}} parameter is not snake case: {{error}}"
+    given: $..parameters[?(@.in == 'path' || @.in == 'query')].name
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][_a-z0-9]+$"
