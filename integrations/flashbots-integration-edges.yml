@@ -1,0 +1,102 @@
+edges:
+- partner_name: DefiLlama Chainlist (extraRpcs.js)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://github.com/DefiLlama/chainlist/blob/main/constants/extraRpcs.js
+  category: Public JSON-RPC node endpoint
+  contract_reference:
+    register: DefiLlama Chainlist (extraRpcs.js)
+    standard: JSON-RPC node endpoint listing
+    spec_file: null
+    role: public-rpc-operator
+    registered_name: flashbots
+    name_source: register
+    register_id: flashbots.net
+    matched_domain: flashbots.net
+    matched_by: domain
+    domain_source: rpc host
+    endpoints_sample:
+    - https://rpc.flashbots.net/
+    chains_sample:
+    - Ethereum Mainnet
+    signal_note: 'listing only: per-chain entries are context, never counted; breadth is not credit; the register
+      certifies nothing, so no certified_products'
+    detected_by: sweep-blockchain-rpc.py
+    detected: '2026-10-18'
+    tracking_labels:
+    - none
+  detected_by: sweep-blockchain-rpc.py
+  first_seen: '2026-10-18'
+- partner_name: ethereum-lists/chains (chainid.network)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://chainid.network/chains.json
+  category: Public JSON-RPC node endpoint
+  contract_reference:
+    register: ethereum-lists/chains (chainid.network)
+    standard: JSON-RPC node endpoint listing
+    spec_file: null
+    role: public-rpc-operator
+    registered_name: flashbots
+    name_source: host label
+    register_id: flashbots.net
+    matched_domain: flashbots.net
+    matched_by: domain
+    domain_source: rpc host
+    endpoints_sample:
+    - https://rpc.flashbots.net
+    - https://rpc.flashbots.net/fast
+    - https://rpc.toliman.suave.flashbots.net
+    chains_sample:
+    - Ethereum Mainnet
+    - Toliman Suave Testnet
+    signal_note: 'listing only: per-chain entries are context, never counted; breadth is not credit; the register
+      certifies nothing, so no certified_products'
+    detected_by: sweep-blockchain-rpc.py
+    detected: '2026-10-18'
+  detected_by: sweep-blockchain-rpc.py
+  first_seen: '2026-10-18'
+- partner_name: Ethereum JSON-RPC (execution-apis)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: compatible
+  shape: ethereum-json-rpc
+  degree: listed
+  evidence_kind: register-listing
+  report_only: true
+  direction: partner-built
+  evidence: https://github.com/DefiLlama/chainlist/blob/main/constants/extraRpcs.js
+  note: an EVM chain's public RPC list carries this provider's endpoint; a listing, not a conformance test. REPORT
+    ONLY (compatible edges are never in depth or position)
+  contract_reference:
+    register: Chainlist / ethereum-lists EVM RPC listings
+    spec_file: https://github.com/ethereum/execution-apis
+    role: evm-json-rpc-endpoint
+    matched_domain: flashbots.net
+    endpoints_sample:
+    - https://rpc.flashbots.net/
+    signal_note: report only
+    detected_by: sweep-blockchain-rpc.py
+    detected: '2026-10-18'
+  detected_by: sweep-blockchain-rpc.py
+  first_seen: '2026-10-18'
+generated: '2026-10-18'
+method: searched
+source:
+- https://github.com/DefiLlama/chainlist/blob/main/constants/extraRpcs.js
+- https://chainid.network/chains.json
+- https://github.com/cosmos/chain-registry
+checked:
+- https://chainid.network/chains.json
+- https://github.com/DefiLlama/chainlist/blob/main/constants/extraRpcs.js
+- https://github.com/cosmos/chain-registry
