@@ -1,4 +1,4 @@
-# Flashbots (flashbots)
+# Flashbots
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,182 +66,136 @@
 
 Flashbots is a research and development organization focused on mitigating the negative externalities of Maximal Extractable Value (MEV) on stateful blockchains, starting with Ethereum. Flashbots maintains and operates a set of public infrastructure: the Flashbots Auction JSON-RPC relay for bundle submission, Flashbots Protect RPC for private mempool transactions, the MEV-Share node and protocol for orderflow sharing, MEV-Boost middleware for validators, and SUAVE - an Ethereum-native, MEV-aware, privacy-first encrypted mempool.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/flashbots/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/flashbots/refs/heads/main/apis.yml)
+**Areas:** MEV · Ethereum · Blockchain · JSON-RPC · Relay · MEV-Boost · MEV-Share · Flashbots Protect · SUAVE · Block Builders · Validator
 
-## Scope
+## Flashbots on APIs.io
 
-- **Type:** Index
+Everything profiled for Flashbots is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/flashbots/](https://apis.io/providers/flashbots/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (7)
 
-- MEV
-- Ethereum
-- Blockchain
-- JSON-RPC
-- Relay
-- MEV-Boost
-- MEV-Share
-- Flashbots Protect
-- SUAVE
-- Block Builders
-- Validators
+- [Flashbots Auction Relay (JSON-RPC)](https://apis.io/apis/flashbots/auction-relay/) — JSON-RPC endpoint for submitting bundles and private transactions to the Flashbots block builder. Supports eth_sendBundle, eth_callBundle, eth_cancelBundle,…
+- [Flashbots Auction Relay (Sepolia Testnet)](https://apis.io/apis/flashbots/auction-relay-sepolia/) — Sepolia testnet instance of the Flashbots Auction JSON-RPC relay for bundle submission and testing without mainnet ETH.
+- [Flashbots Protect RPC](https://apis.io/apis/flashbots/protect-rpc/) — Public-facing Ethereum JSON-RPC endpoint that routes transactions through Flashbots' private mempool to provide frontrunning protection, potential MEV and…
+- [MEV-Share Node API](https://apis.io/apis/flashbots/mev-share-node/) — Public API for the MEV-Share node, an open-source protocol that lets users, wallets, and apps internalize MEV. Users send private transactions to the node,…
+- [MEV-Boost Relay](https://apis.io/apis/flashbots/mev-boost-relay/) — Public Flashbots-operated relay used by MEV-Boost middleware. Aggregates blocks from many builders and presents the most profitable one to the proposing…
+- [SUAVE](https://apis.io/apis/flashbots/suave/) — Single Unifying Auction for Value Expression - an Ethereum-native, MEV-aware, privacy-first encrypted mempool and decentralized block building network.…
+- [Flashbots Auction & MEV Share Relay (JSON RPC) API](https://apis.io/apis/flashbots/flashbots-flashbots-auction-mev-share-relay-json-rpc-api/) — The Flashbots Auction & MEV Share Relay (JSON RPC) API from Flashbots — 1 operation(s) for flashbots auction & mev share relay (json rpc).
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-23
-- **Modified:** 2026-05-23
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-### Flashbots Auction Relay (JSON-RPC)
+Model Context Protocol servers that expose the API to agents.
 
-JSON-RPC endpoint for submitting bundles and private transactions to the Flashbots block builder. Supports eth_sendBundle, eth_callBundle, eth_cancelBundle, eth_sendPrivateTransaction, eth_cancelPrivateTransaction, mev_sendBundle, mev_simBundle, and fee refund methods. Requests are authenticated with an X-Flashbots-Signature header (EIP-191).
+- [flashbots](https://apis.io/servers/flashbots/flashbots/)
 
-- **Human URL:** [https://docs.flashbots.net/flashbots-auction/advanced/rpc-endpoint](https://docs.flashbots.net/flashbots-auction/advanced/rpc-endpoint)
-- **Base URL:** `https://relay.flashbots.net`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- JSON-RPC
-- Bundles
-- Private Transactions
-- Auction
-- Ethereum
+- [Flashbots Agentic Access](https://apis.io/agentic-access/flashbots/flashbots-agentic-access/)
 
-#### Properties
+#### Collections (2)
 
-- [Documentation](https://docs.flashbots.net/flashbots-auction/advanced/rpc-endpoint)
-- [Authentication](https://docs.flashbots.net/flashbots-auction/advanced/rpc-endpoint#authentication)
-- [Repository](https://github.com/flashbots/rpc-endpoint)
-- [Postman Collection](collections/flashbots.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/flashbots.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Postman and Open Collection request collections.
 
-### Flashbots Auction Relay (Sepolia Testnet)
+- [Flashbots Auction & MEV-Share Relay (JSON-RPC)](https://apis.io/collections/flashbots/open-flashbots/)
+- [Flashbots Auction & MEV-Share Relay (JSON-RPC) Flashbots Auction & MEV Share Relay (JSON RPC) Flashbots Auction & MEV Share Relay (JSON RPC) Flashbots Auction & MEV Share Relay (JSON RPC) API](https://apis.io/collections/flashbots/open-flashbots-flashbots-auction-mev-share-relay-json-rpc-api/)
 
-Sepolia testnet instance of the Flashbots Auction JSON-RPC relay for bundle submission and testing without mainnet ETH.
+#### Governance rules (1)
 
-- **Human URL:** [https://docs.flashbots.net/flashbots-auction/advanced/rpc-endpoint](https://docs.flashbots.net/flashbots-auction/advanced/rpc-endpoint)
-- **Base URL:** `https://relay-sepolia.flashbots.net`
+Spectral rulesets for the provider's contracts.
 
-#### Tags
+- [Flashbots — relay specs rules](https://apis.io/rules/flashbots/flashbots-relay-specs-spectral-rules/)
 
-- JSON-RPC
-- Sepolia
-- Testnet
-- Bundles
+#### Security (2)
 
-#### Properties
+Authentication, trust centre, and vulnerability disclosure.
 
-- [Documentation](https://docs.flashbots.net/flashbots-auction/advanced/rpc-endpoint)
-- [Postman Collection](collections/flashbots.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/flashbots.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Flashbots Authentication](https://apis.io/security/flashbots/flashbots-authentication/)
+- [Flashbots Domain Security](https://apis.io/security/flashbots/flashbots-domain-security/)
 
-### Flashbots Protect RPC
+#### Plans and pricing (1)
 
-Public-facing Ethereum JSON-RPC endpoint that routes transactions through Flashbots' private mempool to provide frontrunning protection, potential MEV and gas refunds via MEV-Share, and failed transaction protection. Users add the URL as a custom RPC in their wallet.
+Published plans, tiers and prices.
 
-- **Human URL:** [https://docs.flashbots.net/flashbots-protect/overview](https://docs.flashbots.net/flashbots-protect/overview)
-- **Base URL:** `https://rpc.flashbots.net/fast`
+- [Flashbots Plans Pricing](https://apis.io/plans/flashbots/flashbots-plans-pricing/)
 
-#### Tags
+#### Rate limits (1)
 
-- JSON-RPC
-- Private Mempool
-- Frontrunning Protection
-- MEV Refunds
-- Wallet
+Published request limits.
 
-#### Properties
+- [Flashbots Rate Limits](https://apis.io/rate-limits/flashbots/flashbots-rate-limits/)
 
-- [Documentation](https://docs.flashbots.net/flashbots-protect/overview)
-- [Quick Start](https://docs.flashbots.net/flashbots-protect/quick-start)
-- [Repository](https://github.com/flashbots/rpc-endpoint)
-- [Postman Collection](collections/flashbots.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/flashbots.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### FinOps (1)
 
-### MEV-Share Node API
+What the API costs to run, by operation.
 
-Public API for the MEV-Share node, an open-source protocol that lets users, wallets, and apps internalize MEV. Users send private transactions to the node, which selectively shares orderflow with searchers according to privacy preferences and returns MEV refunds.
+- [Flashbots Finops](https://apis.io/finops/flashbots/flashbots-finops/)
 
-- **Human URL:** [https://docs.flashbots.net/flashbots-mev-share/introduction](https://docs.flashbots.net/flashbots-mev-share/introduction)
-- **Base URL:** `https://mev-share.flashbots.net`
+## Where to find this API
 
-#### Tags
-
-- MEV-Share
-- Orderflow
-- Searchers
-- Privacy
-- Bundles
-
-#### Properties
-
-- [Documentation](https://docs.flashbots.net/flashbots-mev-share/introduction)
-- [Repository](https://github.com/flashbots/mev-share)
-- [Repository](https://github.com/flashbots/mev-share-node)
-- [Postman Collection](collections/flashbots.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/flashbots.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### MEV-Boost Relay
-
-Public Flashbots-operated relay used by MEV-Boost middleware. Aggregates blocks from many builders and presents the most profitable one to the proposing validator. Used by validators running the open-source MEV-Boost sidecar to access the competitive block-building market.
-
-- **Human URL:** [https://docs.flashbots.net/flashbots-mev-boost/introduction](https://docs.flashbots.net/flashbots-mev-boost/introduction)
-- **Base URL:** `https://boost-relay.flashbots.net`
-
-#### Tags
-
-- MEV-Boost
-- Relay
-- Block Building
-- Validators
-- Proposer-Builder Separation
-
-#### Properties
-
-- [Documentation](https://docs.flashbots.net/flashbots-mev-boost/introduction)
-- [Dashboard](https://boost.flashbots.net)
-- [Repository](https://github.com/flashbots/mev-boost)
-- [Repository](https://github.com/flashbots/mev-boost-relay)
-- [Postman Collection](collections/flashbots.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/flashbots.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### SUAVE
-
-Single Unifying Auction for Value Expression - an Ethereum-native, MEV-aware, privacy-first encrypted mempool and decentralized block building network. Provides a testnet, SDKs, and reference clients for building MEV applications.
-
-- **Human URL:** [https://docs.flashbots.net/flashbots-suave/overview](https://docs.flashbots.net/flashbots-suave/overview)
-- **Base URL:** `https://docs.flashbots.net/flashbots-suave/overview`
-
-#### Tags
-
-- SUAVE
-- Encrypted Mempool
-- Block Building
-- Testnet
-- Decentralized
-
-#### Properties
-
-- [Documentation](https://docs.flashbots.net/flashbots-suave/overview)
-- [Repository](https://github.com/flashbots/suave-geth)
-- [Postman Collection](collections/flashbots.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/flashbots.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.flashbots.net)
-- [Portal](https://docs.flashbots.net)
 - [Documentation](https://docs.flashbots.net)
 - [Blog](https://writings.flashbots.net)
-- [Git Hub](https://github.com/flashbots)
-- [Forum](https://collective.flashbots.net)
-- [Community](https://discord.gg/flashbots)
-- [Twitter](https://twitter.com/flashbots)
-- [Research](https://www.flashbots.net/research)
-- [Terms of Service](https://writings.flashbots.net/legal)
+- [Terms of service](https://writings.flashbots.net/legal)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kinlane@gmail.com
+**Kin Score 34.1** — thin · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 68.3 |
+| Contract quality | 53.3 |
+| Contract governance | 45.5 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 47.6 |
+| Access clarity | 5.3 |
+
+**Agent readiness 47.8** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/flashbots/](https://apis.io/providers/flashbots/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Flashbots: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/flashbots/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
